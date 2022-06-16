@@ -19,13 +19,17 @@ namespace FirstResponsiveWebAppMcCoy.Controllers
         [HttpPost]
         public IActionResult Index(AgeModel model)
         {
+            DateTime date = model.Date;
+            int birthYear = model.BirthYear.Value;          
+
             if (ModelState.IsValid)
             {
-                ViewBag.CurrentAge = model.AgeThisYear();
+                ViewBag.CurrentAge = AgeModel.AgeThisYear(date, birthYear);
                 ViewBag.Name = model.FullName;
             }
             else
             {
+                
                 ViewBag.CurrentAge = 0;
             }
             return View(model);
