@@ -1,0 +1,33 @@
+﻿@model List<Assignment>
+@{   
+    ViewData["Title"] = "Assignments";
+}
+
+
+<h2>Assignment List</h2>
+<a asp-controller="Assignment" asp-action="Add">Add New Assignment</a>
+<table class="table table-hover">
+    <thead>
+        <tr><th>Name</th><th>ClassName</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var assignment in Model)
+        {
+            <tr>
+                <td>@assignment.Name</td>
+                <td>@assignment.ClassName </td>                
+                <td>
+                    <a asp-controller="Assignment" asp-action="Edit"
+                       asp-route-id="@assignment.AssignmentId"
+                       asp-route-slug="@assignment.Slug"
+                       class="btn btn-primary">Edit</a>
+                    <a asp-controller="Assignment" asp-action="Delete"
+                       asp-route-id="@assignment.AssignmentId"
+                       asp-route-slug="@assignment.Slug"
+                       class="btn btn-primary">Delete</a>
+                </td>
+            </tr> 
+        }
+    </tbody>
+</table>
+
