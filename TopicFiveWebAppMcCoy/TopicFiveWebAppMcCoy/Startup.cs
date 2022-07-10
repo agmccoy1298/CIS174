@@ -81,6 +81,10 @@ namespace TopicFiveWebAppMcCoy
                     name: "routeParameter",
                     pattern: "{controller=Example}/Detail/{id?}");
 
+                endpoints.MapControllerRoute(
+                    name: "Authorization",
+                    pattern: "{controller=WeekSix}/{action=SixPointOne}/{id=Author}");
+
 
 
             });
