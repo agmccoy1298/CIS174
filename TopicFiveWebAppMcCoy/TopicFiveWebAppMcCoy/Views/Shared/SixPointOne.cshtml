@@ -1,0 +1,23 @@
+﻿
+@model List<Student>
+@{
+    ViewData["Title"] = "SixPointOne";
+}
+
+<h1>SixPointOne</h1>
+<a asp-controller="WeekSix"></a>
+<table class="table table-hover">
+    <thead>
+        <tr><th>FirstName</th><th>LastName</th><th>Grade</th></tr>
+    </thead>
+    <tbody>
+        @foreach(var student in Model)
+            {
+                <tr>
+                    <td>@student.FirstName</td>
+                    <td>@student.LastName</td>
+                    <td>@student.Grade</td>
+                </tr>                           
+            }
+    </tbody>
+</table>
