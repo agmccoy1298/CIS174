@@ -15,11 +15,11 @@ namespace TopicFiveWebAppMcCoy.Controllers
             context = ctx;
         }
 
-        public IActionResult SixPointOne(int? Author)
+        public IActionResult SixPointOne(int? access_level = 0)
         {
-            string stringAuthor = Author.ToString();
+            
             var students = context.StudentList.OrderBy(s => s.StudentID).ToList();
-            return View(stringAuthor, students);
+            return View(students);
         } 
         public IActionResult Index()
         {
