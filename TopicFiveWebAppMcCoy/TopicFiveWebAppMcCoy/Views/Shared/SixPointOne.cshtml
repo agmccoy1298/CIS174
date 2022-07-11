@@ -1,23 +1,41 @@
-﻿
-@model List<Student>
+﻿@model List<Student>
 @{
     ViewData["Title"] = "SixPointOne";
 }
 
 <h1>SixPointOne</h1>
+@if(int.Parse(ViewContext.RouteData.Values["id"].ToString()) >= 8)
+    {
+        <h1>Hello Admin</h1>
+    }
 <a asp-controller="WeekSix"></a>
 <table class="table table-hover">
     <thead>
         <tr><th>FirstName</th><th>LastName</th><th>Grade</th></tr>
     </thead>
     <tbody>
-        @foreach(var student in Model)
+        @foreach (var student in Model)
+        {
+            @if (int.Parse(ViewContext.RouteData.Values["id"].ToString()) <= 2)
             {
+                <tr><td>"You do not have a sufficient access level to view this data."</td></tr>
+            }
+            else if (int.Parse(ViewContext.RouteData.Values["id"].ToString()) <= 7)
+            {
+                <tr>
+                    <td>@student.FirstName</td>
+                    <td>@student.LastName</td>                   
+                </tr>
+
+            }
+            else
+            {               
                 <tr>
                     <td>@student.FirstName</td>
                     <td>@student.LastName</td>
                     <td>@student.Grade</td>
-                </tr>                           
+                </tr>
             }
+        }
     </tbody>
 </table>
