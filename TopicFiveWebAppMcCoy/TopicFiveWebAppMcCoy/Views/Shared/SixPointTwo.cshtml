@@ -11,9 +11,8 @@
             {
                 <a asp-action="WeekSixTwo"
                    asp-route-activeCat="@cat.CategoryID"
-                   asp-route-division="@Model.ActiveGam"
-                   class="list-group-item @Model.CheckActiveCat(cat.CategoryID)"
-                   >cat.Name</a>
+                   asp-route-game="@Model.ActiveGam"
+                   class="list-group-item @Model.CheckActiveCat(cat.CategoryID)">cat.Name</a>
             }
         </div>
         <h3 class="mt-3">Game</h3>
@@ -22,21 +21,21 @@
             {
                 <a asp-action="WeekSixTwo"
                    asp-route-activeCat="@gam.GameID"
-                   asp-route-division="@Model.ActiveCat"
-                   class="list-group-item @Model.CheckActiveGam(gam.GameID)">cat.Name</a>
+                   asp-route-category="@Model.ActiveCat"
+                   class="list-group-item @Model.CheckActiveGam(gam.GameID)">gam.Name</a>
             }
         </div>
-        <div class="col-sm-9">
-            <ul class="list-inline">
-                @foreach (Country country in Model.Countries)
-                {
-                    <li class=" list-inline-item">
-                        <img src="@country.FlagImage"
-                             alt="@country.Name"
-                             title="@country.Name | @country.Category.Name @country.Game.Name" />
-                    </li>
-                }
-            </ul>
-        </div>
+    </div>
+    <div class="col-sm-9">
+        <ul class="list-inline">
+            @foreach (Country country in Model.Countries)
+            {
+                <li class=" list-inline-item">
+                    <img src="@country.FlagImage"
+                         alt="@country.Name"
+                         title="@country.Name | @country.Category.Name @country.Game.Name" />
+                </li>
+            }
+        </ul>
     </div>
 </div>
