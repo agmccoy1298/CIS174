@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace TopicFiveWebAppMcCoy.Controllers
         }
         //public ViewResult SixPointTwo(string activeGam = "all", string activeCat = "all")
         //{
-           
+
         //    //store active categories and games in view bag 
         //    ViewBag.ActiveGame = activeGam;
         //    ViewBag.ActiveCategory = activeCat;
@@ -57,15 +58,17 @@ namespace TopicFiveWebAppMcCoy.Controllers
                 Games = context.Games.ToList()
             };
             IQueryable<Country> query = context.Countries;
-            
+
             if (activeGam != "all")
                 query = query.Where(t => t.Game.GameID.ToLower() == activeGam.ToLower());
             if (activeCat != "all")
-                            query = query.Where(t => t.Category.CategoryID.ToLower() == activeCat.ToLower());
+                query = query.Where(t => t.Category.CategoryID.ToLower() == activeCat.ToLower());
             //pass countries to view as model
             model.Countries = query.ToList();
             return View(model);
-        }
+        }      
+
+
     }
-    
+
 }
