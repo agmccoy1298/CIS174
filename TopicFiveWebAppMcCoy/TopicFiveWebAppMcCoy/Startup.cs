@@ -34,8 +34,8 @@ namespace TopicFiveWebAppMcCoy
                             options.UseSqlServer(Configuration.GetConnectionString("StudentContext")));
             services.AddDbContext<AssignmentContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("AssignmentContext")));
-
-            
+            services.AddDbContext<CountryContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("CountryContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -84,6 +84,11 @@ namespace TopicFiveWebAppMcCoy
                 endpoints.MapControllerRoute(
                     name: "Authorization",
                     pattern: "{controller=WeekSix}/{action=SixPointOne}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name:"custom",
+                    pattern:"{controller}/{action}/cat/{activeCat}/gam/{activeGam}"
+                    );
 
 
 
